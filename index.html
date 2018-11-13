@@ -3,29 +3,141 @@
         <title>HomeManager</title>
         <meta charset="utf-8">
         <link rel="stylesheet" href="css/style.css">
-        <script src="js/app.js"></script>
     </head>
     <body>
 
-        <div class="switch">
-        <input type="checkbox">
-        <label><i></i></label>
-        </div>
+        <center><table style="width:80%">
+            <tr>
+                <td>DUPA</td>
+                <td>
+                    <div class="switch">
+                    <input type="checkbox">
+                    <label><i>
+                        <div>
+                            <p>
+                                <button id="switchButton">turn on</button>
+                            </p>
+                        </div> 
+                    </i></label>
+                    </div>
+                </td> 
+            </tr>
+            <tr>
+                <td>DUPA1</td>
+                <td>
+                    <div class="switch1">
+                    <input type="checkbox">
+                    <label><i>
+                        <div>
+                            <p>
+                                <button id="switchButton1">turn on</button>
+                            </p>
+                        </div>    
+                    </i></label>
+                    </div>
+                </td> 
+            </tr>
+            <tr>
+                <td>DUPA2</td>
+                <td>
+                    <div class="switch2">
+                    <input type="checkbox">
+                    <label><i>
+                        <div>
+                            <p>
+                                <button id="switchButton2">turn on</button>
+                            </p>
+                        </div> 
+                    </i></label>
+                    </div>
+                </td> 
+            </tr>
+            <tr>
+                <td>DUPA3</td>
+                <td>
+                    <div class="switch3">
+                    <input type="checkbox">
+                    <label><i>
+                        <div>
+                            <p>
+                                <button id="switchButton3">turn on</button>
+                            </p>
+                        </div> 
+                    </i></label>
+                    </div>
+                </td> 
+            </tr>
+        </table>
 
-        <div class="switch1">
-        <input type="checkbox">
-        <label><i></i></label>
+        <div>
+            <ul id="messages">
+            </ul>
         </div>
+        <script src="socket.io/socket.io.js"></script>
+        <script src="http://code.jquery.com/jquery-1.8.0.min.js"></script>
 
-        <div class="switch2">
-        <input type="checkbox">
-        <label><i></i></label>
-        </div>
+        <script>
+            $(function(){
+                var socket = io.connect('10.16.201.26:8080');
+ 
+                socket.on('connect', function() {
+                    $('#messages').append('<li>Connected to the server.</li>');            
+                });
+ 
+                socket.on('message', function(message) {    
+                    $('#messages').append('<li>' + message + '</li>');
+                });
+ 
+                socket.on('disconnect', function() {
+                    $('#messages').append('<li>Disconnected from the server.</li>');            
+                });
+ 
+                $('#switchButton').bind('click', function() {
+                    var message = $('#switchButton').text();
+                    socket.send(message);
+                    $('#messages').append('<li>me: ' + message + '</li>');
+ 
+                    if (message == 'turn on')
+                        $('#switchButton').text('turn off');
+                    else 
+                        $('#switchButton').text('turn on');
+                });
 
-        <div class="switch3">
-        <input type="checkbox">
-        <label><i></i></label>
-        </div>
+                $('#switchButton1').bind('click', function() {
+                    var message = $('#switchButton').text();
+                    socket.send(message);
+                    $('#messages').append('<li>me: ' + message + '</li>');
+ 
+                    if (message == 'turn on')
+                        $('#switchButton').text('turn off');
+                    else 
+                        $('#switchButton').text('turn on');
+                });
+
+                $('#switchButton2').bind('click', function() {
+                    var message = $('#switchButton').text();
+                    socket.send(message);
+                    $('#messages').append('<li>me: ' + message + '</li>');
+ 
+                    if (message == 'turn on')
+                        $('#switchButton').text('turn off');
+                    else 
+                        $('#switchButton').text('turn on');
+                });
+
+                $('#switchButton3').bind('click', function() {
+                    var message = $('#switchButton').text();
+                    socket.send(message);
+                    $('#messages').append('<li>me: ' + message + '</li>');
+ 
+                    if (message == 'turn on')
+                        $('#switchButton').text('turn off');
+                    else 
+                        $('#switchButton').text('turn on');
+                });  
+    
+            });
+        </script>
 
     </body>
 </html>
