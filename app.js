@@ -79,11 +79,11 @@ io.sockets.on('connection', function(socket) {
     socket.on('message', function(data) {
         if (data == '2turn on') {
             console.log('2+');
-            board.digitalWrite(relay1, board.HIGH);
+            board.digitalWrite(relay2, board.HIGH);
         }
         if (data == '2turn off') {
             console.log('2-');
-            board.digitalWrite(relay1, board.LOW);
+            board.digitalWrite(relay2, board.LOW);
         }
         return;
     });
