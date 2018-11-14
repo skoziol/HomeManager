@@ -18,8 +18,15 @@ function arduinoReady(err) {
       + '-' + board.firmware.version.major 
       + '.' + board.firmware.version.minor);
  
-    var ledOn = true;
-    board.pinMode(ledPin, board.MODES.OUTPUT);
+
+    board.pinMode(relay0, board.MODES.OUTPUT);
+
+    board.pinMode(relay1, board.MODES.OUTPUT);
+
+    board.pinMode(relay2, board.MODES.OUTPUT);
+
+    board.pinMode(relay3, board.MODES.OUTPUT);
+
 }
  
 app.listen(8080, "10.16.201.26");
@@ -72,11 +79,11 @@ io.sockets.on('connection', function(socket) {
     socket.on('message', function(data) {
         if (data == '2turn on') {
             console.log('2+');
-            board.digitalWrite(relay2, board.HIGH);
+            board.digitalWrite(relay1, board.HIGH);
         }
         if (data == '2turn off') {
             console.log('2-');
-            board.digitalWrite(relay2, board.LOW);
+            board.digitalWrite(relay1, board.LOW);
         }
         return;
     });
