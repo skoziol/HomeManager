@@ -10,37 +10,41 @@
             <tr>
                 <td>DUPA</td>
                 <td>
-                    <div class="switch" id="switchButton">
+                    <div id="switchButton">
+                    <div class="switch">
                     <input type="checkbox">
                     <label><i></i></label>
-                    </div>
+                    </div></div>
                 </td> 
             </tr>
             <tr>
                 <td>DUPA1</td>
                 <td>
-                    <div class="switch1" id="switchButton1">
+                    <div id="switchButton1">
+                    <div class="switch1">
                     <input type="checkbox">
                     <label><i></i></label>
-                    </div>
+                    </div></div>
                 </td> 
             </tr>
             <tr>
                 <td>DUPA2</td>
                 <td>
-                    <div class="switch2" id="switchButton2">
+                    <div id="switchButton2">
+                    <div class="switch2">
                     <input type="checkbox">
                     <label><i></i></label>
-                    </div>
+                    </div></div>
                 </td> 
             </tr>
             <tr>
                 <td>DUPA3</td>
                 <td>
-                    <div class="switch3" id="switchButton3">
+                    <div id="switchButton3">
+                    <div class="switch3">
                     <input type="checkbox">
                     <label><i></i></label>
-                    </div>
+                    </div></div>
                 </td> 
             </tr>
         </table>
@@ -73,43 +77,43 @@
                     socket.send(message);
                     $('#messages').append('<li>me: ' + message + '</li>');
  
-                    if (message == 'turn on')
-                        $('#switchButton').text('turn off');
+                    if (message == '0turn on')
+                        $('#switchButton').text('0turn off');
                     else 
-                        $('#switchButton').text('turn on');
+                        $('#switchButton').text('0turn on');
                 });
 
                 $('#switchButton1').bind('click', function() {
-                    var message = $('#switchButton').text();
+                    var message = $('#switchButton1').text();
                     socket.send(message);
                     $('#messages').append('<li>me: ' + message + '</li>');
  
-                    if (message == 'turn on')
-                        $('#switchButton').text('turn off');
+                    if (message == '1turn on')
+                        $('#switchButton1').text('1turn off');
                     else 
-                        $('#switchButton').text('turn on');
+                        $('#switchButton1').text('1turn on');
                 });
 
                 $('#switchButton2').bind('click', function() {
-                    var message = $('#switchButton').text();
+                    var message = $('#switchButton2').text();
                     socket.send(message);
                     $('#messages').append('<li>me: ' + message + '</li>');
  
                     if (message == 'turn on')
-                        $('#switchButton').text('turn off');
+                        $('#switchButton2').text('2turn off');
                     else 
-                        $('#switchButton').text('turn on');
+                        $('#switchButton2').text('2turn on');
                 });
 
                 $('#switchButton3').bind('click', function() {
-                    var message = $('#switchButton').text();
+                    var message = $('#switchButton3').text();
                     socket.send(message);
                     $('#messages').append('<li>me: ' + message + '</li>');
  
-                    if (message == 'turn on')
-                        $('#switchButton').text('turn off');
+                    if (message == '3turn on')
+                        $('#switchButton3').text('3turn off');
                     else 
-                        $('#switchButton').text('turn on');
+                        $('#switchButton3').text('3turn on');
                 });  
 
             });

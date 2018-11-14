@@ -4,7 +4,10 @@ var app = require('http').createServer(handler),
     firmata = require('/usr/local/lib/node_modules/firmata'),
     board = new firmata.Board('/dev/ttyUSB0', arduinoReady);
  
-var ledPin = 13;
+var relay0 = 2;
+var relay1 = 3;
+var relay2 = 4;
+var relay3 = 5;
  
 function arduinoReady(err) {
     if (err) {
@@ -43,29 +46,49 @@ io.sockets.on('connection', function(socket) {
     socket.send('connected...');
  
     socket.on('message', function(data) {
-        if (data == 'turn on') {
-            console.log('+');
-            board.digitalWrite(ledPin, board.HIGH);
-            socket.broadcast.send("let there be light!");
+        if (data == '0turn on') {
+            console.log('0+');
+            board.digitalWrite(relay0, board.HIGH);
         }
-        if (data == 'turn off') {
-            console.log('-');
-            board.digitalWrite(ledPin, board.LOW);
-            socket.broadcast.send("who turned out the light?");
+        if (data == '0turn off') {
+            console.log('0-');
+            board.digitalWrite(relay0, board.LOW);
         }
         return;
     });
 
     socket.on('message', function(data) {
-        if (data == 'turn on') {
-            console.log('+');
-            board.digitalWrite(ledPin, board.HIGH);
-            socket.broadcast.send("let there be light!");
+        if (data == '1turn on') {
+            console.log('1+');
+            board.digitalWrite(relay1, board.HIGH);
         }
-        if (data == 'turn off') {
-            console.log('-');
-            board.digitalWrite(ledPin, board.LOW);
-            socket.broadcast.send("who turned out the light?");
+        if (data == '1turn off') {
+            console.log('1-');
+            board.digitalWrite(relay1, board.LOW);
+        }
+        return;
+    });
+
+    socket.on('message', function(data) {
+        if (data == '2turn on') {
+            console.log('2+');
+            board.digitalWrite(relay2, board.HIGH);
+        }
+        if (data == '2turn off') {
+            console.log('2-');
+            board.digitalWrite(relay2, board.LOW);
+        }
+        return;
+    });
+
+    socket.on('message', function(data) {
+        if (data == '3turn on') {
+            console.log('3+');
+            board.digitalWrite(relay3, board.HIGH);
+        }
+        if (data == '3turn off') {
+            console.log('3-');
+            board.digitalWrite(relay3, board.LOW);
         }
         return;
     });
