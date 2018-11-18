@@ -7,7 +7,7 @@ var app = require('http').createServer(handler),
 var relay0 = 2;
 var relay1 = 3;
 var relay2 = 4;
-var relay3 = 6;
+var relay3 = 5;
  
 function arduinoReady(err) {
     if (err) {
